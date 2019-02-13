@@ -41,11 +41,21 @@ namespace _1002_Project
                 return false;
             }
 
-            buttons[buttonNumber].GetTopLeft().GetX();
-            buttons[buttonNumber].GetTopLeft().GetY();
-            buttons[buttonNumber].GetBottomRight().GetX();
-            buttons[buttonNumber].GetBottomRight().GetY();
+            int xTopLeft = buttons[buttonNumber].GetTopLeft().GetX();
+            int yTopLeft = buttons[buttonNumber].GetTopLeft().GetY();
+            int xBottomRight = buttons[buttonNumber].GetBottomRight().GetX();
+            int yBottomRight = buttons[buttonNumber].GetBottomRight().GetY();
 
+            if (xBottomRight + x > MyCanvas.MAX_WIDTH)
+                return false;
+
+            if (yBottomRight + y > MyCanvas.MAX_HEIGHT)
+                return false;
+
+            buttons[buttonNumber].SetTopLeft(new Point(xTopLeft + x, yTopLeft + y));
+            buttons[buttonNumber].SetBottomRight(new Point(xBottomRight + x, yBottomRight + y));
+
+            return true;
         }
 
         public static bool DeleteLastButton()
