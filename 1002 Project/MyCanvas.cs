@@ -36,7 +36,16 @@ namespace _1002_Project
 
         public static bool MoveButton(int buttonNumber, int x, int y)
         {
-                
+            if(buttonNumber > buttonCounter)
+            {
+                return false;
+            }
+
+            buttons[buttonNumber].GetTopLeft().GetX();
+            buttons[buttonNumber].GetTopLeft().GetY();
+            buttons[buttonNumber].GetBottomRight().GetX();
+            buttons[buttonNumber].GetBottomRight().GetY();
+
         }
 
         public static bool DeleteLastButton()
