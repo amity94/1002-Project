@@ -9,44 +9,59 @@ namespace _1002_Project
     internal class MyButton
     {
         protected Point topLeft;
-        protected Point topRight;
+        protected Point bottomRight;
+
         private int width;
         private int height;
 
-        internal MyButton(Point topLeft, Point topRight)
+        internal MyButton(Point topLeft, Point bottomRight)
         {
             this.topLeft = topLeft;
-            this.topRight = topRight;
+            this.bottomRight = bottomRight;
         }
 
         internal int GetWidth()
         {
-
+            return this.width;
         }
 
         internal int GetHeight()
         {
-
+            return this.height;
         }
 
-        internal bool SetTopLeft(Point)
+        internal bool SetTopLeft(Point pnt)
         {
-
+            if (pnt.GetX() < bottomRight.GetX() && pnt.GetY() > bottomRight.GetY())
+            {
+                this.topLeft = pnt;
+                this.width = bottomRight.GetX() - topLeft.GetX();
+                this.height = topLeft.GetY() - bottomRight.GetY();
+                return true;
+            }
+            return false;
         }
 
-        internal bool SetTopRight(Point)
+        internal bool SetBottomRight(Point pnt)
         {
-
+            if (pnt.GetX() > bottomRight.GetX() && pnt.GetY() < bottomRight.GetY())
+            {
+                this.topLeft = pnt;
+                this.width = bottomRight.GetX() - topLeft.GetX();
+                this.height = topLeft.GetY() - bottomRight.GetY();
+                return true;
+            }
+            return false;
         }
 
         internal Point GetTopLeft()
         {
-
+            return topLeft;
         }
 
-        internal Point GetTopRight()
+        internal Point GetBottomRight()
         {
-
+            return bottomRight;
         }
 
     }
