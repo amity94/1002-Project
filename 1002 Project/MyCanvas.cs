@@ -60,12 +60,22 @@ namespace _1002_Project
 
         public static bool DeleteLastButton()
         {
+            if (buttons.Length > 1)
+            {
+                buttons[MaxButtons] = buttons[MaxButtons-1];
+                return true;
+            }
+
+            return false;
             
         }
 
         public static void ClearAllButtons()
         {
-            buttonCounter = 0;
+            if (buttons.Length > 1)
+            {
+                buttons[MaxButtons] = buttons[MaxButtons - MaxButtons];
+            }
         }
 
         public static int GetCurrentNumberOfButtons()
@@ -80,12 +90,36 @@ namespace _1002_Project
 
         public static int GetTheMaxWidthOfAButton()
         {
-
+            int i;
+            for (i = 0; i < buttons.Length; i++)
+            {
+                if(buttons[i].GetTopLeft().GetX() > buttons[i++].GetTopLeft().GetX() && buttons[i].GetBottomRight().GetX() > buttons[i++].GetBottomRight().GetX())
+                {
+                    return i;
+                }
+                if(buttons[i].GetTopLeft().GetX() < buttons[i++].GetTopLeft().GetX() && buttons[i].GetBottomRight().GetX() < buttons[i++].GetBottomRight().GetX())
+                {
+                  i++;
+                }
+            }
+            return i;
         }
 
         public static int GetTheMaxHeightOfAButton()
         {
-
+            int i;
+            for (i = 0; i < buttons.Length; i++)
+            {
+                if (buttons[i].GetTopLeft().GetY() > buttons[i++].GetTopLeft().GetY() && buttons[i].GetBottomRight().GetY() > buttons[i++].GetBottomRight().GetY())
+                {
+                    return i;
+                }
+                if (buttons[i].GetTopLeft().GetY() < buttons[i++].GetTopLeft().GetY() && buttons[i].GetBottomRight().GetY() < buttons[i++].GetBottomRight().GetY())
+                {
+                    i++;
+                }
+            }
+            return i;
         }
 
         public static bool IsPointInsideAButton(int x, int y)
@@ -98,6 +132,17 @@ namespace _1002_Project
 
         }
 
+        public static void Print()
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                Console.WriteLine(buttons[i].GetBottomRight().GetX());
+                Console.WriteLine(buttons[i].GetBottomRight().GetY());
+                Console.WriteLine(buttons[i].GetTopLeft().GetX());
+                Console.WriteLine(buttons[i].GetTopLeft().GetY());
+
+            }
+        }
 
     }
 }
