@@ -67,7 +67,6 @@ namespace _1002_Project
             }
 
             return false;
-            
         }
 
         public static void ClearAllButtons()
@@ -90,36 +89,28 @@ namespace _1002_Project
 
         public static int GetTheMaxWidthOfAButton()
         {
-            int i;
-            for (i = 0; i < buttons.Length; i++)
+            int temp = 0;
+            for (int i = 0; i < buttons.Length; i++)
             {
-                if(buttons[i].GetTopLeft().GetX() > buttons[i++].GetTopLeft().GetX() && buttons[i].GetBottomRight().GetX() > buttons[i++].GetBottomRight().GetX())
+                if (buttons[i].GetWidth() > temp)
                 {
-                    return i;
-                }
-                if(buttons[i].GetTopLeft().GetX() < buttons[i++].GetTopLeft().GetX() && buttons[i].GetBottomRight().GetX() < buttons[i++].GetBottomRight().GetX())
-                {
-                  i++;
+                    temp = buttons[i].GetWidth();
                 }
             }
-            return i;
+            return temp;
         }
 
         public static int GetTheMaxHeightOfAButton()
         {
-            int i;
-            for (i = 0; i < buttons.Length; i++)
+            int temp = 0;
+            for (int i = 0; i < buttons.Length; i++)
             {
-                if (buttons[i].GetTopLeft().GetY() > buttons[i++].GetTopLeft().GetY() && buttons[i].GetBottomRight().GetY() > buttons[i++].GetBottomRight().GetY())
+                if (buttons[i].GetHeight() > temp)
                 {
-                    return i;
-                }
-                if (buttons[i].GetTopLeft().GetY() < buttons[i++].GetTopLeft().GetY() && buttons[i].GetBottomRight().GetY() < buttons[i++].GetBottomRight().GetY())
-                {
-                    i++;
+                    temp = buttons[i].GetHeight();
                 }
             }
-            return i;
+            return temp;
         }
 
         public static bool IsPointInsideAButton(int x, int y)
